@@ -1,0 +1,5 @@
+django==3.2.5
+# Django Environ to enable env file
+django-environ==0.4.5
+# Requests to enable HTTP requests
+requests==2.25.1
