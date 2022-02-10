@@ -1,6 +1,6 @@
 <article class="flex{% if todo.is_done %} bg-green-50{% endif %}">
   <div class="w-4/5 py-3">
-    <p class="px-6 text-xs text-gray-900" hx-get="/edit/{{ todo.id }}/" hx-target="this" hx-swap="outerHTML">
+    <p class="px-6 text-xs text-gray-900" hx-get="/edit-todo/{{ todo.id }}/" hx-target="this" hx-swap="outerHTML">
       {{ todo.title }}
     </p>
   </div>

@@ -14,6 +14,27 @@ def TodosView(request):
     return render(request, "todo/todos.html", context)
 
 
+@require_http_methods(["GET", "POST"])
+def EditTodoView(request, pk):
+    todo = TodoModel.objects.get(pk=pk)
+
+    if request.method == "POST":
+        todo.title = request.POST.get("title", "")
+        todo.save()
+
+        context = {
+            "todo": todo
+        }
+
+        return render(request, "todo/partials/todo.html", context)
+
+    context = {
+        "todo": todo
+    }
+
+    return render(request, "todo/partials/edit.html", context)
+
+
 @require_http_methods(["POST"])
 def AddTodoView(request):
     todo = None
@@ -29,6 +50,7 @@ def AddTodoView(request):
     }
     return render(request, "todo/partials/todo.html", context)
 
+
 @require_http_methods(["PUT"])
 def UpdateTodoView(request, pk):
     todo = TodoModel.objects.get(pk=pk)
@@ -38,6 +60,7 @@ def UpdateTodoView(request, pk):
         "todo": todo
     }
     return render(request, "todo/partials/todo.html", context)
+
 
 @require_http_methods(["DELETE"])
 def DeleteTodoView(request, pk):

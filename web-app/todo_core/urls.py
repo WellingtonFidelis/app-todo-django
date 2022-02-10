@@ -20,7 +20,8 @@ from todo.views import (
     TodosView, 
     AddTodoView, 
     UpdateTodoView, 
-    DeleteTodoView
+    DeleteTodoView,
+    EditTodoView
 )
 
 urlpatterns = [
@@ -28,5 +29,6 @@ urlpatterns = [
     path("", TodosView, name="todos"),
     path("add-todo/", AddTodoView, name="add-todo"),
     path("update-todo/<int:pk>/", UpdateTodoView, name="update-todo"),
+    path("edit-todo/<int:pk>/", EditTodoView, name="edit-todo"),
     path("delete-todo/<int:pk>/", DeleteTodoView, name="delete-todo"),
 ]
